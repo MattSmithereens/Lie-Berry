@@ -140,5 +140,25 @@ namespace Library.Models
             return newBook;
         }
 
+        public void AttributeTo(Author author)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO authors_books (author_id, book_id) VALUES (@author_id, @book_id);";
+
+            cmd.Parameters.AddWithValue("@book_id", this.Id);
+            cmd.Parameters.AddWithValue("@author_id", author.Id);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
     }
 }

@@ -138,7 +138,7 @@ namespace Library.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO patrons_books (patron_id, book_id, due_date, returned) VALUES (@patron_id, @book_id, @due_date, @returned";
+            cmd.CommandText = @"INSERT INTO patrons_books (patron_id, book_id, due_date, returned) VALUES (@patron_id, @book_id, @due_date, @returned);";
 
             cmd.Parameters.AddWithValue("@patron_id", this.Id);
             cmd.Parameters.AddWithValue("@book_id", book.Id);
