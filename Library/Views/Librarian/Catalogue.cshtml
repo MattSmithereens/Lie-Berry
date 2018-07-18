@@ -8,7 +8,14 @@
         <div class="col">
             <p>List of library catalogue</p>
             <p><small>options to add, edit, and remove entries</small></p>
-            <p>@Model.allBooks[0].Title | @Model.allBooks[0].ListAuthors()[0]</p>
+            @for (int i = 0; i < @Model.allBooks.Count; i++)
+            {
+                <p>@Model.allBooks[i].Title</p>
+                @for (int j = 0; j < @Model.allBooks[i].ListAuthors().Count; j++)
+                {
+                    @Model.allBooks[i].ListAuthors()[j]<span>, </span>
+                }
+            }
             <form>
                 <label>add a book:</label>
                 <div class="form-group">
