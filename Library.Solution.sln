@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "..\..\Desktop\Library.Solution\Library\Library.csproj", "{FBE20C8C-7CB2-4ED6-839C-E41F68D74062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Tests", "..\..\Desktop\Library.Solution\Library.Tests\Library.Tests.csproj", "{F75384FA-619A-4B54-854C-ACB018BC5EA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBE20C8C-7CB2-4ED6-839C-E41F68D74062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE20C8C-7CB2-4ED6-839C-E41F68D74062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE20C8C-7CB2-4ED6-839C-E41F68D74062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE20C8C-7CB2-4ED6-839C-E41F68D74062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75384FA-619A-4B54-854C-ACB018BC5EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75384FA-619A-4B54-854C-ACB018BC5EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75384FA-619A-4B54-854C-ACB018BC5EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75384FA-619A-4B54-854C-ACB018BC5EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
