@@ -10,8 +10,9 @@ namespace Library.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public int Copies { get; set; }
+        public List<Author> Authors { get; set; } 
 
-        public Book(int id = 0, string title, int copies)
+        public Book(string title, int copies, int id = 0)
         {
             Id = id;
             Title = title;
@@ -29,7 +30,9 @@ namespace Library.Models
             cmd.Parameters.AddWithValue("@title", this.Title);
             cmd.Parameters.AddWithValue("@copies", this.Copies);
 
+
             cmd.ExecuteNonQuery();
+
             Id = (int)cmd.LastInsertedId;
 
             conn.Close();
@@ -93,7 +96,7 @@ namespace Library.Models
                 string title = rdr.GetString(1);
                 int copies = rdr.GetInt32(2);
 
-                Book newBook = new Book(id, title, copies);
+                Book newBook = new Book(title, copies, id);
                 allBooks.Add(newBook);
             }
 
@@ -106,14 +109,14 @@ namespace Library.Models
             return allBooks;
         }
 
-        public static Book Find(int id)
+        public static Book Find(int withId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT * FROM books WHERE id = (@id);";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", withId);
 
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
             int id = 0;
@@ -127,7 +130,7 @@ namespace Library.Models
                 copies = rdr.GetInt32(2);
             }
 
-            Book newBook = new Book(id, title, copies);
+            Book newBook = new Book(title, copies, id);
             conn.Close();
             if (conn != null)
             {
