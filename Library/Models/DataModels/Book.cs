@@ -160,5 +160,38 @@ namespace Library.Models
             }
         }
 
+        public List<string> ListAuthors()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT authors.* FROM
+                                books JOIN authors_books ON (books.id = authors_books.book_id)
+                                      JOIN authors ON (authors_books.author_id = authors.id)
+                                WHERE books.id = @id;";
+            
+            cmd.Parameters.AddWithValue("@id", this.Id);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            List<string> AuthorNames = new List<string>();
+
+            while (rdr.Read())
+            {
+                string name = rdr.GetString(1);
+                AuthorNames.Add(name);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return AuthorNames;
+
+        }
+
     }
 }

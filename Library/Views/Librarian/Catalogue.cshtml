@@ -1,0 +1,29 @@
+﻿@{
+  Layout = "_Layout";
+  ViewBag.Title = "Librarian: Catalogue";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>List of library catalogue</p>
+            <p><small>options to add, edit, and remove entries</small></p>
+            <p>@Model.allBooks[0].Title | @Model.allBooks[0].ListAuthors()[0]</p>
+            <form>
+                <label>add a book:</label>
+                <div class="form-group">
+                    <label for="title">title</label>
+                    <input name="title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="author">author(s)</label>
+                    <input name="author" type="text" placeholder="seperate authors with ','s">
+                </div>
+                <div class="form-group">
+                    <label for="copies">copies</label>
+                    <input name="copies" type="number">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

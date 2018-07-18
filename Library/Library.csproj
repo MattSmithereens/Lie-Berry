@@ -10,4 +10,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
     <PackageReference Include="MySqlConnector" Version="0.42.3" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Author\" />
+    <Folder Include="Views\Book\" />
+    <Folder Include="Views\Patron\" />
+    <Folder Include="Views\Librarian\" />
+    <Folder Include="Models\DataModels\" />
+    <Folder Include="Models\ViewModels\" />
+  </ItemGroup>
 </Project>

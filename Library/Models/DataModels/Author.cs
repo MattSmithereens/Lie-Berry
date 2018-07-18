@@ -56,7 +56,76 @@ namespace Library.Models
                 conn.Dispose();
             }
         }
+
+
+        public static Author Find(int id)
+        {
+            {
+                MySqlConnection conn = DB.Connection();
+                conn.Open();
+
+                var cmd = conn.CreateCommand() as MySqlCommand;
+                cmd.CommandText = @"SELECT * FROM author WHERE id = @Id;";
+
+                MySqlParameter thisId = new MySqlParameter();
+                thisId.ParameterName = "@Id";
+                thisId.Value = id;
+                cmd.Parameters.Add(thisId);
+
+                var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+                int authorId = 0;
+                string authorName = "";
+
+                while (rdr.Read())
+                {
+                    authorId = rdr.GetInt32(0);
+                    authorName = rdr.GetString(1);
+                }
+
+                Author foundAuthor = new Author(authorName, authorId);
+
+                conn.Close();
+                if (conn != null)
+                {
+                    conn.Dispose();
+                }
+
+                return foundAuthor;
+            }
+        }
  
+
+        public static List<Author> GetAll()
+        {
+            List<Author> allAuthors = new List<Author> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM authors;";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+
+                Author newAuthor = new Author(name, id);
+                allAuthors.Add(newAuthor);
+            }
+
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return allAuthors;
+        }
+
         public void Delete()
         {
             MySqlConnection conn = DB.Connection();
