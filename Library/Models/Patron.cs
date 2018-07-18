@@ -131,5 +131,30 @@ namespace Library.Models
 
             return newPatron;
         }
+
+        public void CheckOut(Book book)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO patrons_books (patron_id, book_id, due_date, returned) VALUES (@patron_id, @book_id, @due_date, @returned";
+
+            cmd.Parameters.AddWithValue("@patron_id", this.Id);
+            cmd.Parameters.AddWithValue("@book_id", book.Id);
+
+            DateTime due = DateTime.Now.AddDays(7);
+
+            cmd.Parameters.AddWithValue("@due_date", due);
+            cmd.Parameters.AddWithValue("@returned", false);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
     }
 }
