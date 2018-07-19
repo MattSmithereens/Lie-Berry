@@ -26,14 +26,14 @@ namespace Library.Controllers
             return View("Index", Patron.GetAll());
         }
 
-        [HttpGet("/patron/check-ins")]
-        public IActionResult CheckIn()
+        [HttpPost("/patron/check-ins")]
+        public IActionResult CheckIn(string patron)
         {
             return View();
         }
 
-        [HttpGet("/patron/checkouts")]
-        public IActionResult CheckOut()
+        [HttpPost("/patron/checkouts")]
+        public IActionResult CheckOut(string patron)
         {
             return View();
         }
