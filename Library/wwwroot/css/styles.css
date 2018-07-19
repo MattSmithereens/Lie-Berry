@@ -1,0 +1,19 @@
+#cover {
+    background-image: url("../img/stripes-light.png");
+    height: 100vh;
+    width: 100vw;
+    opacity: .5;
+    position: fixed;
+}
+
+.book-listing:nth-child(2n+1){
+    background: linear-gradient(to right, white, #eee, white);
+}
+
+#patron-actions {
+    display: none;
+}
+
+#select-patron {
+    display: none;
+}

@@ -6,16 +6,36 @@
 <div class="container">
  <div class="row">
     <div class="col">
-        <form>
+        <p>New Patron</p>
+        <hr>
+            <form action="@Url.Action()" method="post">
+                <label for="name">Name: </label>
+                <input name="name" type="text" required>
+                <button class="btn btn-info btn-sm ml-4">Register</button>
+            </form>
+        <br>
+        <p>Existing Patron</p>
+        <hr>
+        <form id="patron-select">
             <label>As:</label>
-            <select>
-                <option>Patron</option>
-                <option>Patron</option>
-                <option>Patron</option>
+            <select id="select-menu">
+                <option selected disabled>Please select a patron</option>
+                @foreach (var patron in @Model)
+                {
+                    <option value="@patron.Id">@patron.Name</option>
+                }
             </select>
+            <button id="select-patron" type="submit"></button> 
         </form>
-        <a href="check-ins">Check-in</a><br>
-        <a href="checkouts">Checkout</a>
+
+    </div>
+    <div class="col">
+        <div id="patron-actions">
+            <p>What would you like to do today?</p>
+            <hr>
+            <p id="return">Return Books</p>
+            <p id="checkout">Checkout Books</p>
+        </div>
     </div>
  </div>
 </div>

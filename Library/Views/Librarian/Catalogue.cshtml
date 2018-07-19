@@ -6,29 +6,60 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <p>List of library catalogue</p>
-            <p><small>options to add, edit, and remove entries</small></p>
+            <p>Catalogue</p>
+            <hr>
+            <p>
             @for (int i = 0; i < @Model.allBooks.Count; i++)
             {
-                <p>@Model.allBooks[i].Title</p>
-                @for (int j = 0; j < @Model.allBooks[i].ListAuthors().Count; j++)
-                {
-                    @Model.allBooks[i].ListAuthors()[j]<span>, </span>
-                }
+                <div class="row mb-2 book-listing">
+                    <div class="col-7">
+                        @Model.allBooks[i].Title <small>by</small><br>
+                        @for (int j = 0; j < @Model.allBooks[i].ListAuthors().Count; j++)
+                        {
+                            @Model.allBooks[i].ListAuthors()[j]
+                            @if(j != @Model.allBooks[i].ListAuthors().Count - 1)
+                            {
+                                @if(j == @Model.allBooks[i].ListAuthors().Count - 2)
+                                {<span> and </span>}
+                                else 
+                                {<span>, </span>}
+                            }
+                        }
+                    </div>
+                    <div class="col-4 mr-auto">
+                        <br><small>@Model.allBooks[i].Copies in inventory</small>
+                    </div>
+                    <div class="col-1">
+                        &nbsp;
+                    </div>   
+                </div>
+
             }
-            <form>
-                <label>add a book:</label>
-                <div class="form-group">
-                    <label for="title">title</label>
-                    <input name="title" type="text">
+            </p>
+        </div>
+        <div class="col">
+            <p>Add book</p>
+            <hr>
+            <form action="@Url.Action()" method="post">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="title">Title: </label>
+                        <input name="title" type="text" required>
+                    </div>
+                    <div class="form-group ml-1">
+                        <label for="copies">Copies: </label>
+                        <input name="copies" type="number" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="author">author(s)</label>
-                    <input name="author" type="text" placeholder="seperate authors with ','s">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="authors">Author(s): </label>
+                        <input name="authors" type="text" required>
+                        <small class="text-muted">Separate multiple authors with ' , 's</small>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="copies">copies</label>
-                    <input name="copies" type="number">
+                <div class="row">
+                    <button type="submit" class="btn btn-info">Add</button>
                 </div>
             </form>
         </div>
