@@ -8,9 +8,9 @@
         <hr /><br />
         <h4>@Model.Name</h4>
         <h5><strong>Students Enrolled</strong></h5>
-        @foreach(var student in Model.GetStudents())
+        @foreach(var student in Model.GetAuthors())
         {
-            <p><a href="~/student/@student.Id/details">@student.Name</a></p>
+            <p><a href="~/author/@author.Id/details">@author.Name</a></p>
         }
         <a href="/course/@Model.Id/update" class="btn btn-primary">Edit</a>
         <form method="post" class="inline-form-button" action="/course/@Model.Id/delete"><button type="submit" class="btn btn-danger">Delete</button></form>

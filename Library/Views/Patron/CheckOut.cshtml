@@ -7,7 +7,40 @@
     <div class="row">
         <div class="col">
             <p>List of library catalogue</p>
-            <p><small>option to check books out</small></p>
+            <p><small>@Model.patron.Name's checking out books.</small></p>
+            @for (int i = 0; i < @Model.allBooks.Count; i++)
+            {
+                <div class="row mb-2 book-listing">
+                    <div class="col-8">
+                        @Model.allBooks[i].Title <small>by</small><br>
+                        @for (int j = 0; j < @Model.allBooks[i].ListAuthors().Count; j++)
+                        {
+                            @Model.allBooks[i].ListAuthors()[j]
+                            @if(j != @Model.allBooks[i].ListAuthors().Count - 1)
+                            {
+                                @if(j == @Model.allBooks[i].ListAuthors().Count - 2)
+                                {<span> and </span>}
+                                else 
+                                {<span>, </span>}
+                            }
+                        }
+                    </div>
+                    <div class="col-4">
+                        <form action="@Url.Action()/@Model.patron.Id/success" method="post">
+                            <div class="dummy-val">
+                                <select name="thisBookId">
+                                    <option value="@Model.allBooks[i].Id" selected></option>
+                                </select>
+                            </div>
+                            <button class="btn-check btn btn-info btn-sm">Check out</button>
+                        </form>
+                        
+                    </div>
+
+                      
+                </div>
+
+            }
         </div>
     </div>
 </div>

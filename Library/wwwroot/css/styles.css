@@ -17,3 +17,19 @@
 #select-patron {
     display: none;
 }
+
+.in-stock {
+    color: #c2de83;
+}
+
+.checked-out {
+    color: #91bbe4;
+}
+
+.btn-check {
+    margin-top: 8px;
+}
+
+.dummy-val {
+    display: none;
+}

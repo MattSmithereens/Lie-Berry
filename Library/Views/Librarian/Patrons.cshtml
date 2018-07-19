@@ -8,6 +8,20 @@
         <div class="col">
             <p>List of Patrons</p>
             <p><small>option to view details or delete patron</small></p>
+                        <p>
+                <div>
+                    <div class="col-7">
+                        <ul>
+                            @for (int i = 0; i < @Model.Count; i++)
+                            {
+                            <li><a href="@Model[i].Id">@Model[i].Name</a></li>
+                            }
+                        </ul>
+                    </div>  
+                </div>
+
+            
+            </p>
         </div>
     </div>
 </div>

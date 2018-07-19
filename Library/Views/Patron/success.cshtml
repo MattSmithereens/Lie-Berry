@@ -1,0 +1,20 @@
+﻿@{
+  Layout = "_Layout";
+  ViewBag.Title = "Patron: Checkout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>List of library catalogue</p>
+            <p><strong>@Model.patron.Name checked out @Model.allBooks[@Model.bookId].Title</strong></p>
+                    <div id="patron-actions">
+            <p>What would you like to do today?</p>
+            <hr>
+            <p id="return">Return Books</p>
+            <p id="checkout">Checkout More Books</p>
+            <p id="#">Go Home</p>
+        </div>
+        </div>
+    </div>
+</div>

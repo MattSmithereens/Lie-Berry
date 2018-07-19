@@ -19,5 +19,9 @@ $(function() {
         $("#patron-select").attr("action", "checkouts").attr("method", "post");
         $("#select-patron").click();
     });
-    
+
+    $(".in-stock").click(function() 
+    {
+       $(this).removeClass("in-stock").addClass("checked-out").text("checked out"); 
+    });
 });

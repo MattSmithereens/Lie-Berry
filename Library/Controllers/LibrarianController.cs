@@ -47,7 +47,7 @@ namespace Library.Controllers
         [HttpGet("librarian/patrons")]
         public IActionResult Patrons()
         {
-            return View();
+            return View(Patron.GetAll());
         }
     }
 }
