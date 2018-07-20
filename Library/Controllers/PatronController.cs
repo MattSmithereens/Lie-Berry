@@ -48,7 +48,9 @@ namespace Library.Controllers
         {
             PatronsBooks newPatronsBooks = new PatronsBooks(id);
             newPatronsBooks.ThisBook(thisBookId);
-
+            int properId = Int32.Parse(thisBookId);
+            Book newBook = Book.Find(properId);
+            newPatronsBooks.patron.CheckOut(newBook);
             return View("Success", newPatronsBooks);
         }
     }
